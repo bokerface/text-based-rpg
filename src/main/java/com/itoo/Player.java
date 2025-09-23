@@ -6,7 +6,7 @@ public class Player extends Character {
         super(name, health, attack, defense, exp);
     }
 
-    public static void gainExp(int exp) {
+    public void gainExp(int exp) {
 
     }
 }

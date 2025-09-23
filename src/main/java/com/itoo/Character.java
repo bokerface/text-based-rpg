@@ -45,4 +45,8 @@ public class Character {
         return this.name;
     }
 
+    public int getExp() {
+        return this.exp;
+    }
+
 }

@@ -29,8 +29,23 @@ public class Event {
 
         while (player.isAlive && monster.isAlive) {
 
+            System.err.println(player.getName() + " attacks " + monster.getName());
             monster.takeDamage(player.getAttackPower());
-            System.out.println("You attack the " + monster.getName() + " for " + player.getAttackPower() + " damage.");
+            try {
+                Thread.sleep(1000); // Simulate time between attacks
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.err.println(monster.getName() + " attacks " + player.getName());
+            player.takeDamage(monster.getAttackPower());
+        }
+
+        if (player.isAlive) {
+            System.out.println("You defeated the " + monster.getName() + " and gained " + monster.getExp() + " EXP!");
+            player.gainExp(monster.getExp());
+        } else {
+            System.out.println("You were defeated by the " + monster.getName() + ". Game Over.");
+            System.exit(0);
         }
     }
 }
