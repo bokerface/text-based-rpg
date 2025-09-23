@@ -6,8 +6,8 @@ public class Character {
     private int health;
     private int attackPower;
     private int defense;
-    private int exp;
-    private int level = 1;
+    public int exp;
+    public int level = 1;
 
     public boolean isAlive;
 

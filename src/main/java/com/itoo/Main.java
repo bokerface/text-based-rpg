@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void explore(Scanner s, Player player) {
+    public static void action(Scanner s, Player player) {
 
+        System.err.println("Status: " + player.getName() + " | Level: " + player.level + " | EXP: " + player.exp + "/" + player.expToNextLevel);
         System.out.println("Select action :");
         System.out.println("1. Explore");
         System.out.println("2. Exit");
@@ -35,12 +36,12 @@ public class Main {
 
         // s.close();
         while (isAlive) {
-            explore(s, player);
-            try {
-                Thread.sleep(2000); // Simulate game loop delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            action(s, player);
+            // try {
+            //     Thread.sleep(2000); // Simulate game loop delay
+            // } catch (InterruptedException e) {
+            //     e.printStackTrace();
+            // }
         }
     }
 }
