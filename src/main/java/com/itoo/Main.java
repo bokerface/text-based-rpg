@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void action(Scanner s, Player player) {
+    public static void action(Scanner scanner, Player player) {
 
         // print player status and available actions
         System.err.println("Status: " + player.getName() + " | Level: " + player.getLevel() + " | EXP: " + player.getExp() + "/" + player.getExpToNextLevel());
@@ -13,7 +13,7 @@ public class Main {
         System.out.println("2. Exit");
 
         // get player choice and perform action
-        int choice = s.nextInt();
+        int choice = scanner.nextInt();
         switch (choice) {
             case 1:
                 Event.generate(player);
@@ -29,19 +29,18 @@ public class Main {
 
     public static void main(String[] args) {
         // declare scanner for user intput
-        Scanner s = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.err.print("Enter your name: ");
         // get player name input
-        String name = s.nextLine();
+        String name = scanner.nextLine();
 
         // create new instance of player
         Player player = new Player(name, 100, 15, 5, 0);
 
         // main loop of the game
         while (player.getIsAlive()) {
-            action(s, player);
-
+            action(scanner, player);
         }
     }
 }

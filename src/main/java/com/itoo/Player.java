@@ -35,5 +35,4 @@ public class Player extends Entity {
     public int getExpToNextLevel() {
         return this.expToNextLevel;
     }
-
 }
