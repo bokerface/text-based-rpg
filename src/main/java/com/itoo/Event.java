@@ -31,6 +31,9 @@ public class Event {
 
             System.err.println(player.getName() + " attacks " + monster.getName());
             monster.takeDamage(player.getAttackPower());
+            if (!monster.isAlive) {
+                break;
+            }
             try {
                 Thread.sleep(1000); // Simulate time between attacks
             } catch (InterruptedException e) {
@@ -38,6 +41,9 @@ public class Event {
             }
             System.err.println(monster.getName() + " attacks " + player.getName());
             player.takeDamage(monster.getAttackPower());
+            if (!player.isAlive) {
+                break;
+            }
         }
 
         if (player.isAlive) {
