@@ -1,8 +1,8 @@
 package com.itoo;
 
-public class Player extends Character {
+public class Player extends Entity {
 
-    int expToNextLevel;
+    private int expToNextLevel;
 
     public Player(String name, int health, int attack, int defense, int exp) {
         super(name, health, attack, defense, exp);
@@ -10,21 +10,30 @@ public class Player extends Character {
     }
 
     private int setExpToNextLevel() {
-        return 100 + (100 / 2) * this.level;
+        // set the exp needed for the next level after leveling up (formula applied after level 1)
+        return 100 + (100 / 2) * this.getLevel();
     }
 
     public void gainExp(int amount) {
-        this.exp += amount;
-        while (this.exp >= this.expToNextLevel) {
-            this.exp -= this.expToNextLevel;
+        // add the exp gained from battle to player's current exp
+        this.setExp(this.getExp() + amount);
+
+        // check if player has enough exp to level up
+        while (this.getExp() >= this.expToNextLevel) {
+            this.setExp(this.getExp() - this.expToNextLevel);
             levelUp();
             this.expToNextLevel = setExpToNextLevel();
-            System.out.println("Congratulations! You've leveled up to level " + this.level + "!");
+            System.out.println("Congratulations! You've leveled up to level " + this.getLevel() + "!");
             System.out.println("EXP needed for next level: " + this.expToNextLevel);
         }
     }
 
     public void levelUp() {
-        this.level += 1;
+        this.setLevel(this.getLevel() + 1);
     }
+
+    public int getExpToNextLevel() {
+        return this.expToNextLevel;
+    }
+
 }

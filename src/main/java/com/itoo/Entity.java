@@ -1,17 +1,17 @@
 package com.itoo;
 
-public class Character {
+public class Entity {
 
     private String name;
     private int health;
     private int attackPower;
     private int defense;
-    public int exp;
-    public int level = 1;
+    private int exp;
+    private int level = 1;
 
-    public boolean isAlive;
+    private boolean isAlive;
 
-    public Character(String name, int health, int attackPower, int defense, int exp) {
+    public Entity(String name, int health, int attackPower, int defense, int exp) {
         this.name = name;
         this.health = health;
         this.attackPower = attackPower;
@@ -21,7 +21,10 @@ public class Character {
     }
 
     public void takeDamage(int damage) {
+        // prevent negative damage and ensure at least 1 damage is taken when defense is higher than attack
         int calculatedDamage = Math.max(damage - this.defense, 1);
+
+        // update health and check if entity is still alive
         this.health -= calculatedDamage;
         System.out.println(this.name + " takes " + calculatedDamage + " damage. Remaining health: " + this.health);
         if (this.health <= 0) {
@@ -49,4 +52,23 @@ public class Character {
         return this.exp;
     }
 
+    public int setExp(int exp) {
+        return this.exp = exp;
+    }
+
+    public int setLevel(int level) {
+        return this.level = level;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public boolean setIsAlive(boolean isAlive) {
+        return this.isAlive = isAlive;
+    }
+
+    public boolean getIsAlive() {
+        return this.isAlive;
+    }
 }

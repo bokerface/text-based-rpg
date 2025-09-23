@@ -27,11 +27,11 @@ public class Event {
     public static void battle(Player player) {
         Monster monster = Factory.generateMonster();
 
-        while (player.isAlive && monster.isAlive) {
+        while (player.getIsAlive() && monster.getIsAlive()) {
 
             System.err.println(player.getName() + " attacks " + monster.getName());
             monster.takeDamage(player.getAttackPower());
-            if (!monster.isAlive) {
+            if (!monster.getIsAlive()) {
                 break;
             }
             try {
@@ -41,12 +41,12 @@ public class Event {
             }
             System.err.println(monster.getName() + " attacks " + player.getName());
             player.takeDamage(monster.getAttackPower());
-            if (!player.isAlive) {
+            if (!player.getIsAlive()) {
                 break;
             }
         }
 
-        if (player.isAlive) {
+        if (player.getIsAlive()) {
             System.out.println("You defeated the " + monster.getName() + " and gained " + monster.getExp() + " EXP!");
             player.gainExp(monster.getExp());
         } else {
