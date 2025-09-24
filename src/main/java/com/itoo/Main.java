@@ -7,7 +7,7 @@ public class Main {
     public static void action(Scanner scanner, Player player) {
 
         // print player status and available actions
-        System.err.println("Status: " + player.getName() + " | Level: " + player.getLevel() + " | EXP: " + player.getExp() + "/" + player.getExpToNextLevel());
+        System.err.println("Status: " + player.getName() + " | Level: " + player.getLevel() + " | Health: " + player.getHealth() + "/" + player.getMaxHealth() + " | Potions: " + player.getPotions() + " | EXP: " + player.getExp() + "/" + player.getExpToNextLevel());
         System.out.println("Select action :");
         System.out.println("1. Explore");
         System.out.println("2. Exit");
@@ -36,7 +36,7 @@ public class Main {
         String name = scanner.nextLine();
 
         // create new instance of player
-        Player player = new Player(name, 100, 15, 5, 0);
+        Player player = new Player(name, 100, 100, 15, 5, 0);
 
         // main loop of the game
         while (player.getIsAlive()) {

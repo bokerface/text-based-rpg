@@ -11,6 +11,12 @@ public class Event {
         // 5% chance of finding a rest spot
         if (eventChance < 5) {
             System.out.println("You found a rest area");
+            try {
+                Thread.sleep(1000); // Simulate time taken to rest
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            restArea(player);
         } // 10% chance of finding treasure
         else if (eventChance < 10) {
             System.out.println("You found a treasure chest!");
@@ -53,5 +59,10 @@ public class Event {
             System.out.println("You were defeated by the " + monster.getName() + ". Game Over.");
             System.exit(0);
         }
+    }
+
+    public static void restArea(Player player) {
+        System.out.println("You take a rest and fully recovered your health.");
+        player.takeHealing(player.getMaxHealth());
     }
 }

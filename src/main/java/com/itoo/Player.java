@@ -4,14 +4,28 @@ public class Player extends Entity {
 
     private int expToNextLevel;
 
-    public Player(String name, int health, int attack, int defense, int exp) {
-        super(name, health, attack, defense, exp);
+    private int potions;
+
+    public Player(String name, int health, int maxHealth, int attack, int defense, int exp) {
+        super(name, health, maxHealth, attack, defense, exp);
         this.expToNextLevel = 100;
     }
 
-    private int setExpToNextLevel() {
+    public int setPotions(int amount) {
+        return this.potions += amount;
+    }
+
+    public int getPotions() {
+        return this.potions;
+    }
+
+    public int setExpToNextLevel() {
         // set the exp needed for the next level after leveling up (formula applied after level 1)
         return 100 + (100 / 2) * this.getLevel();
+    }
+
+    public int getExpToNextLevel() {
+        return this.expToNextLevel;
     }
 
     public void gainExp(int amount) {
@@ -32,7 +46,14 @@ public class Player extends Entity {
         this.setLevel(this.getLevel() + 1);
     }
 
-    public int getExpToNextLevel() {
-        return this.expToNextLevel;
+    public void usePotion() {
+        if (this.potions > 0) {
+            this.takeHealing(40);
+            this.potions -= 1;
+            System.out.println("You used a potion and restored 40 health points.");
+            System.out.println("You have " + this.potions + " potions left.");
+        } else {
+            System.out.println("You have no potions left!");
+        }
     }
 }
