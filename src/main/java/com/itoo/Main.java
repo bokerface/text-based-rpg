@@ -10,7 +10,8 @@ public class Main {
         System.err.println("Status: " + player.getName() + " | Level: " + player.getLevel() + " | Health: " + player.getHealth() + "/" + player.getMaxHealth() + " | Potions: " + player.getPotions() + " | EXP: " + player.getExp() + "/" + player.getExpToNextLevel());
         System.out.println("Select action :");
         System.out.println("1. Explore");
-        System.out.println("2. Exit");
+        System.err.println("2. Use Potion");
+        System.out.println("3. Exit");
 
         // get player choice and perform action
         int choice = scanner.nextInt();
@@ -19,6 +20,9 @@ public class Main {
                 Event.generate(player);
                 break;
             case 2:
+                player.usePotion();
+                break;
+            case 3:
                 System.out.println("Exiting the game. Goodbye!");
                 System.exit(0);
                 break;
