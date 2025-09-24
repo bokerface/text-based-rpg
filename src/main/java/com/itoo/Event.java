@@ -20,6 +20,12 @@ public class Event {
         } // 10% chance of finding treasure
         else if (eventChance < 10) {
             System.out.println("You found a treasure chest!");
+            try {
+                Thread.sleep(1000); // Simulate time taken to open the treasure chest
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            treasuerChest(player);
         } // 30% chance of encountering a monster
         else if (eventChance < 50) {
             System.out.println("You're ambushed by a monster!");
@@ -64,5 +70,12 @@ public class Event {
     public static void restArea(Player player) {
         System.out.println("You take a rest and fully recovered your health.");
         player.takeHealing(player.getMaxHealth());
+    }
+
+    public static void treasuerChest(Player player) {
+        Random random = new Random();
+        int potionsFound = random.nextInt(3) + 1;
+        player.setPotions(potionsFound);
+        System.out.println("You found " + potionsFound + " health potions!");
     }
 }
