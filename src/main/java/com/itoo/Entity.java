@@ -91,6 +91,7 @@ public class Entity {
     }
 
     public void takeHealing(int healAmount) {
+        // restore health but not exceed max health
         this.health = Math.min(this.health + healAmount, this.maxHealth);
     }
 
